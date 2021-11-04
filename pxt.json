@@ -1,10 +1,11 @@
 {
-    "name": "未命名",
+    "name": "car",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "mooncar": "github:iCShopMgr/MoonCar#2afb451b334d736a0981e7988d972127df3761a7"
     },
     "files": [
         "main.blocks",
