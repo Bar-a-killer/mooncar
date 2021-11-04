@@ -1,19 +1,11 @@
 function 循線 () {
     while (mooncar.IRRead() != 無感光 && supersound % 2 == 1) {
-        if (supersound == 1) {
-            break;
-        } else if (mooncar.IRRead() == 全感光) {
-            while (mooncar.IRRead() == 全感光) {
-                mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
-            }
+        if (mooncar.IRRead() == 全感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
         } else if (mooncar.IRRead() == 左感光) {
-            while (mooncar.IRRead() != 全感光) {
-                mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
-            }
+            mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
         } else if (mooncar.IRRead() == 右感光) {
-            while (mooncar.IRRead() != 全感光) {
-                mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
-            }
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
         }
     }
 }
