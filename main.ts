@@ -30,12 +30,12 @@
  * basic.pause(500)
  */
 function 循線 () {
-    while (mooncar.IRRead() != 無感光) {
-        if (mooncar.IRRead() == 全感光) {
+    while (mooncar.LineFollowerSensor() != 無感光) {
+        if (mooncar.LineFollowerSensor() == 全感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
-        } else if (mooncar.IRRead() == 左感光) {
+        } else if (mooncar.LineFollowerSensor() == 左感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
-        } else if (mooncar.IRRead() == 右感光) {
+        } else if (mooncar.LineFollowerSensor() == 右感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
         }
     }
@@ -56,7 +56,4 @@ basic.forever(function () {
     } else {
         basic.pause(6000)
     }
-})
-basic.forever(function () {
-	
 })
