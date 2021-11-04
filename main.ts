@@ -1,5 +1,5 @@
 function 循線 () {
-    while (mooncar.IRRead() != 無感光) {
+    while (mooncar.IRRead() != 無感光 && supersound % 2 == 1) {
         if (supersound == 1) {
             break;
         } else if (mooncar.IRRead() == 全感光) {
@@ -18,14 +18,22 @@ function 循線 () {
     }
 }
 function 超音波觸發 () {
-    mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
-    basic.pause(500)
-    mooncar.MoonCarLR(20, 90)
-    basic.pause(4000)
-    mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
-    basic.pause(500)
+    if (supersound / 2 % 2 == 1) {
+        mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
+        basic.pause(500)
+        mooncar.MoonCarLR(20, 90)
+        basic.pause(4000)
+        mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
+        basic.pause(500)
+    } else {
+        mooncar.MoonCarGo(mooncar.Direction.direct3, 15)
+        basic.pause(500)
+        mooncar.MoonCarLR(90, 20)
+        basic.pause(4000)
+        mooncar.MoonCarGo(mooncar.Direction.direct3, 15)
+        basic.pause(500)
+    }
 }
-let _1 = 0
 let supersound = 0
 let 全感光 = 0
 let 左感光 = 0
@@ -35,19 +43,13 @@ let 無感光 = 0
 右感光 = 2
 左感光 = 1
 全感光 = 0
+supersound = 1
 basic.forever(function () {
-    while (supersound == 1) {
-        basic.showNumber(_1)
-        basic.pause(1000)
-        _1 += 1
+    if (mooncar.UltrasonicSensor() <= 10) {
+        supersound += 1
+        超音波觸發()
     }
 })
 basic.forever(function () {
-    if (mooncar.UltrasonicSensor() <= 10) {
-        supersound = 1
-        超音波觸發()
-        supersound = 0
-    } else {
-        循線()
-    }
+    循線()
 })
