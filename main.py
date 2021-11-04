@@ -1,5 +1,5 @@
 def 循線():
-    while mooncar.ir_read() != 無感光 and True:
+    while mooncar.ir_read() != 無感光:
         if mooncar.ir_read() == 全感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT1, 20)
         elif mooncar.ir_read() == 左感光:
