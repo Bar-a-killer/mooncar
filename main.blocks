@@ -43,4 +43,4 @@ basic.forever(on_forever)</comment><data>0</data><statement name="HANDLER"><bloc
         . . . . . 
         . # . # . 
         . . # . .
-        `</field></block></statement></block></statement></block></xml>
+        `</field><next><block type="mooncar_MoonCarGo" id="~Eflm(9HC{[qo%qrK!tt"><field name="direction">mooncar.Direction.direct1</field><value name="movespeed"><shadow type="math_number" id="0Le-h3#U}xl5BI1GJ_Q*"><field name="NUM">0</field></shadow></value></block></next></block></statement></block></statement></block></xml>

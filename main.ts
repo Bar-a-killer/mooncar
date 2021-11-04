@@ -74,5 +74,6 @@ basic.forever(function () {
             . # . # .
             . . # . .
             `)
+        mooncar.MoonCarGo(mooncar.Direction.direct1, 0)
     }
 })
