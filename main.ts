@@ -1,3 +1,3 @@
-basic.forever(function on_forever() {
-    
+basic.forever(function () {
+    music.playMelody("- - - - - - - - ", 120)
 })
