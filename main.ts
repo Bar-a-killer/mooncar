@@ -1,5 +1,5 @@
 function 循線 () {
-    while (mooncar.IRRead() != 無感光 && true) {
+    while (mooncar.IRRead() != 無感光) {
         if (mooncar.IRRead() == 全感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
         } else if (mooncar.IRRead() == 左感光) {
