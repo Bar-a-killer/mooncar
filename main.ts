@@ -29,8 +29,36 @@
  * 
  * basic.pause(500)
  */
-function 循線 () {
-    while (mooncar.LineFollowerSensor() != 無感光) {
+/**
+ * def 循線():
+ */
+/**
+ * while mooncar.line_follower_sensor() != 無感光:
+ */
+/**
+ * pass
+ */
+mooncar.Filllight(mooncar.Switch.Open)
+let 無感光 = 3
+let 右感光 = 2
+let 左感光 = 1
+let supersound = 1
+// def on_forever():
+// if supersound % 2 == 1:
+// 循線()
+// else:
+// basic.pause(6000)
+// basic.forever(on_forever)
+basic.forever(function () {
+    if (mooncar.LineFollowerSensor() != 無感光) {
+        let 全感光 = 0
+        basic.showLeds(`
+            . # . # .
+            . . . . .
+            # # . # #
+            . . # . .
+            . . . . .
+            `)
         if (mooncar.LineFollowerSensor() == 全感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
         } else if (mooncar.LineFollowerSensor() == 左感光) {
@@ -38,22 +66,13 @@ function 循線 () {
         } else if (mooncar.LineFollowerSensor() == 右感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
         }
-    }
-}
-let 全感光 = 0
-let 左感光 = 0
-let 右感光 = 0
-let 無感光 = 0
-mooncar.Filllight(mooncar.Switch.Open)
-無感光 = 3
-右感光 = 2
-左感光 = 1
-全感光 = 0
-let supersound = 1
-basic.forever(function () {
-    if (supersound % 2 == 1) {
-        循線()
     } else {
-        basic.pause(6000)
+        basic.showLeds(`
+            . . . . .
+            . # . # .
+            . . . . .
+            . # . # .
+            . . # . .
+            `)
     }
 })
