@@ -42,6 +42,7 @@ mooncar.Filllight(mooncar.Switch.Open)
 let 無感光 = 3
 let 右感光 = 2
 let 左感光 = 1
+let 全感光 = 0
 let supersound = 1
 // def on_forever():
 // if supersound % 2 == 1:
@@ -51,7 +52,6 @@ let supersound = 1
 // basic.forever(on_forever)
 basic.forever(function () {
     if (mooncar.LineFollowerSensor() != 無感光) {
-        let 全感光 = 0
         basic.showLeds(`
             . # . # .
             . . . . .
