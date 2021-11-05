@@ -61,10 +61,13 @@ basic.forever(function () {
             `)
         if (mooncar.LineFollowerSensor() == 全感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
+            basic.pause(1)
         } else if (mooncar.LineFollowerSensor() == 左感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 2)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 5)
+            basic.pause(1)
         } else if (mooncar.LineFollowerSensor() == 右感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct4, 2)
+            mooncar.MoonCarGo(mooncar.Direction.direct4, 5)
+            basic.pause(1)
         }
     } else {
         basic.showLeds(`

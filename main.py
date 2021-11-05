@@ -1,13 +1,3 @@
-# def 循線():
-#     while mooncar.line_follower_sensor() != 無感光:
-#         pass
-無感光 = 0
-mooncar.filllight(mooncar.Switch.OPEN)
-無感光 = 3
-右感光 = 2
-左感光 = 1
-全感光 = 0
-supersound = 1
 """
 
 def 超音波觸發():
@@ -41,22 +31,52 @@ mooncar.moon_car_go(mooncar.Direction.DIRECT3, 15)
 basic.pause(500)
 
 """
+"""
 
+def 循線():
+
+"""
+"""
+
+while mooncar.line_follower_sensor() != 無感光:
+
+"""
+"""
+
+pass
+
+"""
+mooncar.filllight(mooncar.Switch.OPEN)
+無感光 = 3
+右感光 = 2
+左感光 = 1
+supersound = 1
 # def on_forever():
-#     if supersound % 2 == 1:
-#         循線()
-#     else:
-#         basic.pause(6000)
+# if supersound % 2 == 1:
+# 循線()
+# else:
+# basic.pause(6000)
 # basic.forever(on_forever)
 
-def on_forever2():
+def on_forever():
     if mooncar.line_follower_sensor() != 無感光:
+        全感光 = 0
+        basic.show_leds("""
+            . # . # .
+                        . . . . .
+                        # # . # #
+                        . . # . .
+                        . . . . .
+        """)
         if mooncar.line_follower_sensor() == 全感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT1, 20)
+            basic.pause(1)
         elif mooncar.line_follower_sensor() == 左感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT4, 20)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 5)
+            basic.pause(1)
         elif mooncar.line_follower_sensor() == 右感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 20)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT4, 5)
+            basic.pause(1)
     else:
         basic.show_leds("""
             . . . . .
@@ -65,4 +85,5 @@ def on_forever2():
                         . # . # .
                         . . # . .
         """)
-basic.forever(on_forever2)
+        mooncar.moon_car_go(mooncar.Direction.DIRECT1, 0)
+basic.forever(on_forever)
