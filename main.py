@@ -47,6 +47,8 @@ mooncar.filllight(mooncar.Switch.OPEN)
 右感光 = 2
 左感光 = 1
 supersound = 1
+print("github_test")
+print("confict")
 # def on_forever():
 # if supersound % 2 == 1:
 # 循線()
@@ -65,13 +67,13 @@ def on_forever():
                         . . . . .
         """)
         if mooncar.line_follower_sensor() == 全感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT1, 20)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT1, 15)
             basic.pause(1)
         elif mooncar.line_follower_sensor() == 左感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 5)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
             basic.pause(1)
         elif mooncar.line_follower_sensor() == 右感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT4, 5)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
             basic.pause(1)
     else:
         basic.show_leds("""
@@ -83,3 +85,6 @@ def on_forever():
         """)
         mooncar.moon_car_go(mooncar.Direction.DIRECT1, 0)
 basic.forever(on_forever)
+
+
+print('confict')
