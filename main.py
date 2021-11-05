@@ -1,5 +1,15 @@
 """
 
+while mooncar.line_follower_sensor() != 無感光:
+
+"""
+"""
+
+def 循線():
+
+"""
+"""
+
 def 超音波觸發():
 
 if supersound / 2 % 2 == 1:
@@ -31,21 +41,7 @@ mooncar.moon_car_go(mooncar.Direction.DIRECT3, 15)
 basic.pause(500)
 
 """
-"""
-
-def 循線():
-
-"""
-"""
-
-while mooncar.line_follower_sensor() != 無感光:
-
-"""
-"""
-
-pass
-
-"""
+# pass
 mooncar.filllight(mooncar.Switch.OPEN)
 無感光 = 3
 右感光 = 2

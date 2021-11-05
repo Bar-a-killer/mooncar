@@ -1,4 +1,10 @@
 /**
+ * while mooncar.line_follower_sensor() != 無感光:
+ */
+/**
+ * def 循線():
+ */
+/**
  * def 超音波觸發():
  * 
  * if supersound / 2 % 2 == 1:
@@ -29,15 +35,7 @@
  * 
  * basic.pause(500)
  */
-/**
- * def 循線():
- */
-/**
- * while mooncar.line_follower_sensor() != 無感光:
- */
-/**
- * pass
- */
+// pass
 mooncar.Filllight(mooncar.Switch.Open)
 let 無感光 = 3
 let 右感光 = 2
@@ -60,13 +58,13 @@ basic.forever(function () {
             . . . . .
             `)
         if (mooncar.LineFollowerSensor() == 全感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
+            mooncar.MoonCarGo(mooncar.Direction.direct1, 15)
             basic.pause(1)
         } else if (mooncar.LineFollowerSensor() == 左感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 5)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 6)
             basic.pause(1)
         } else if (mooncar.LineFollowerSensor() == 右感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct4, 5)
+            mooncar.MoonCarGo(mooncar.Direction.direct4, 6)
             basic.pause(1)
         }
     } else {
