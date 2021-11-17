@@ -37,63 +37,14 @@ function 超音波觸發 () {
     }
 }
 function 無黑線 () {
-    for (let index = 0; index < 20; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 6)
-            basic.pause(1)
-        } else {
-            break;
-        }
-    }
-    for (let index = 0; index < 40; index++) {
-        mooncar.MoonCarGo(mooncar.Direction.direct4, 6)
+    蚊香 = 0
+    while (mooncar.LineFollowerSensor() == 無感光) {
+        蚊香 += 5
+        mooncar.MoonCarLR(蚊香, 2 * 蚊香)
         basic.pause(1)
-    }
-    for (let index = 0; index < 20; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 6)
-            basic.pause(1)
-        } else {
-            break;
-        }
-    }
-    for (let index = 0; index < 100; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct1, 12)
-            basic.pause(1)
-        } else {
-            break;
-        }
-    }
-    for (let index = 0; index < 100; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct2, 50)
-            basic.pause(1)
-        } else {
-            break;
-        }
-    }
-    for (let index = 0; index < 1000; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
-            basic.pause(1)
-        } else {
-            break;
-        }
-    }
-    for (let index = 0; index < 1000; index++) {
-        mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
-        basic.pause(1)
-    }
-    for (let index = 0; index < 1000; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
-            basic.pause(1)
-        } else {
-            break;
-        }
     }
 }
+let 蚊香 = 0
 let 全感光 = 0
 let supersound = 0
 let 左感光 = 0
@@ -113,6 +64,91 @@ basic.forever(function () {
         無黑線()
     }
 })
+/**
+ * for index in range(20):
+ * 
+ * if mooncar.ir_read() == 無感光:
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+ * 
+ * basic.pause(1)
+ * 
+ * else:
+ * 
+ * break
+ * 
+ * for index2 in range(40):
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
+ * 
+ * basic.pause(1)
+ * 
+ * for index3 in range(20):
+ * 
+ * if mooncar.ir_read() == 無感光:
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+ * 
+ * basic.pause(1)
+ * 
+ * else:
+ * 
+ * break
+ * 
+ * for index4 in range(100):
+ * 
+ * if mooncar.ir_read() == 無感光:
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT1, 12)
+ * 
+ * basic.pause(1)
+ * 
+ * else:
+ * 
+ * break
+ * 
+ * for index5 in range(100):
+ * 
+ * if mooncar.ir_read() == 無感光:
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT2, 50)
+ * 
+ * basic.pause(1)
+ * 
+ * else:
+ * 
+ * break
+ * 
+ * for index6 in range(1000):
+ * 
+ * if mooncar.ir_read() == 無感光:
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+ * 
+ * basic.pause(1)
+ * 
+ * else:
+ * 
+ * break
+ * 
+ * for index7 in range(1000):
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+ * 
+ * basic.pause(1)
+ * 
+ * for index8 in range(1000):
+ * 
+ * if mooncar.ir_read() == 無感光:
+ * 
+ * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+ * 
+ * basic.pause(1)
+ * 
+ * else:
+ * 
+ * break
+ */
 basic.forever(function () {
     if (mooncar.UltrasonicSensor() <= 15) {
         supersound += 1

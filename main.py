@@ -33,6 +33,13 @@ def 超音波觸發():
         basic.pause(500)
         return
 def 無黑線():
+    global 蚊香
+    蚊香 = 0
+    while mooncar.line_follower_sensor() == 無感光:
+        蚊香 += 5
+        mooncar.moon_car_lr(蚊香, 2 * 蚊香)
+        basic.pause(1)
+'''
     for index in range(20):
         if mooncar.ir_read() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
@@ -75,6 +82,8 @@ def 無黑線():
             basic.pause(1)
         else:
             break
+'''
+蚊香 = 0
 全感光 = 0
 supersound = 0
 左感光 = 0
@@ -95,9 +104,9 @@ def on_forever():
 basic.forever(on_forever)
 
 def on_forever2():
-    global 右感光
+    global supersound
     if mooncar.ultrasonic_sensor() <= 15:
-        右感光 += 1
+        supersound += 1
         超音波觸發()
-        右感光 += 1
+        supersound += 1
 basic.forever(on_forever2)
