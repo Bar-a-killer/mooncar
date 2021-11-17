@@ -25,6 +25,7 @@ function 超音波觸發 () {
         basic.pause(4000)
         mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
         basic.pause(500)
+        return
     } else {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 15)
         basic.pause(500)
@@ -32,6 +33,7 @@ function 超音波觸發 () {
         basic.pause(4000)
         mooncar.MoonCarGo(mooncar.Direction.direct3, 15)
         basic.pause(500)
+        return
     }
 }
 function 無黑線 () {
@@ -113,8 +115,8 @@ basic.forever(function () {
 })
 basic.forever(function () {
     if (mooncar.UltrasonicSensor() <= 15) {
-        右感光 += 1
+        supersound += 1
         超音波觸發()
-        右感光 += 1
+        supersound += 1
     }
 })

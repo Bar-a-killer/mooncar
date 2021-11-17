@@ -23,6 +23,7 @@ def 超音波觸發():
         basic.pause(4000)
         mooncar.moon_car_go(mooncar.Direction.DIRECT4, 15)
         basic.pause(500)
+        return
     else:
         mooncar.moon_car_go(mooncar.Direction.DIRECT3, 15)
         basic.pause(500)
@@ -30,6 +31,7 @@ def 超音波觸發():
         basic.pause(4000)
         mooncar.moon_car_go(mooncar.Direction.DIRECT3, 15)
         basic.pause(500)
+        return
 def 無黑線():
     for index in range(20):
         if mooncar.ir_read() == 無感光:
