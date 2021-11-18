@@ -1,7 +1,7 @@
 def Mosquito_coil():
     global 蚊香
     蚊香 = -90
-    while mooncar.ultrasonic_sensor() != 5:
+    while mooncar.line_follower_sensor() == 無感光:
         mooncar.moon_car_lr(90, 蚊香)
         basic.pause(100)
         if 蚊香 == -89.95:
@@ -48,6 +48,7 @@ def 無黑線():
 supersound = 0
 左感光 = 0
 右感光 = 0
+無感光 = 0
 蚊香 = 0
 # for index in range(20):
 # 
