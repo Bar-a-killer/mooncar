@@ -1,3 +1,15 @@
+function Mosquito_coil () {
+    蚊香 = -90
+    while (mooncar.UltrasonicSensor() != 5) {
+        mooncar.MoonCarLR(90, 蚊香)
+        basic.pause(100)
+        if (蚊香 == -89.95) {
+            蚊香 = 0
+        } else {
+            蚊香 += 0.05
+        }
+    }
+}
 function 循線 () {
     basic.showLeds(`
         . # . # .
@@ -37,21 +49,99 @@ function 超音波觸發 () {
     }
 }
 function 無黑線 () {
-    蚊香 = 0
-    while (mooncar.LineFollowerSensor() == 無感光) {
-        蚊香 += 5
-        mooncar.MoonCarLR(蚊香, 2 * 蚊香)
-        basic.pause(1)
-    }
+	
 }
-let 蚊香 = 0
 let 全感光 = 0
 let supersound = 0
 let 左感光 = 0
 let 右感光 = 0
-let 無感光 = 0
+let 蚊香 = 0
+// for index in range(20):
+// 
+// if mooncar.ir_read() == 無感光:
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+// 
+// basic.pause(1)
+// 
+// else:
+// 
+// break
+// 
+// for index2 in range(40):
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
+// 
+// basic.pause(1)
+// 
+// for index3 in range(20):
+// 
+// if mooncar.ir_read() == 無感光:
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+// 
+// basic.pause(1)
+// 
+// else:
+// 
+// break
+// 
+// for index4 in range(100):
+// 
+// if mooncar.ir_read() == 無感光:
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT1, 12)
+// 
+// basic.pause(1)
+// 
+// else:
+// 
+// break
+// 
+// for index5 in range(100):
+// 
+// if mooncar.ir_read() == 無感光:
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT2, 50)
+// 
+// basic.pause(1)
+// 
+// else:
+// 
+// break
+// 
+// for index6 in range(1000):
+// 
+// if mooncar.ir_read() == 無感光:
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+// 
+// basic.pause(1)
+// 
+// else:
+// 
+// break
+// 
+// for index7 in range(1000):
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+// 
+// basic.pause(1)
+// 
+// for index8 in range(1000):
+// 
+// if mooncar.ir_read() == 無感光:
+// 
+// mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+// 
+// basic.pause(1)
+// 
+// else:
+// 
+// break
+蚊香 = 0
 mooncar.Filllight(mooncar.Switch.Open)
-無感光 = 3
+let 無感光 = 3
 右感光 = 2
 左感光 = 1
 supersound = 1
@@ -61,94 +151,9 @@ basic.forever(function () {
         循線()
     }
     if (supersound % 2 == 1) {
-        無黑線()
+        Mosquito_coil()
     }
 })
-/**
- * for index in range(20):
- * 
- * if mooncar.ir_read() == 無感光:
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
- * 
- * basic.pause(1)
- * 
- * else:
- * 
- * break
- * 
- * for index2 in range(40):
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
- * 
- * basic.pause(1)
- * 
- * for index3 in range(20):
- * 
- * if mooncar.ir_read() == 無感光:
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
- * 
- * basic.pause(1)
- * 
- * else:
- * 
- * break
- * 
- * for index4 in range(100):
- * 
- * if mooncar.ir_read() == 無感光:
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT1, 12)
- * 
- * basic.pause(1)
- * 
- * else:
- * 
- * break
- * 
- * for index5 in range(100):
- * 
- * if mooncar.ir_read() == 無感光:
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT2, 50)
- * 
- * basic.pause(1)
- * 
- * else:
- * 
- * break
- * 
- * for index6 in range(1000):
- * 
- * if mooncar.ir_read() == 無感光:
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
- * 
- * basic.pause(1)
- * 
- * else:
- * 
- * break
- * 
- * for index7 in range(1000):
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
- * 
- * basic.pause(1)
- * 
- * for index8 in range(1000):
- * 
- * if mooncar.ir_read() == 無感光:
- * 
- * mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
- * 
- * basic.pause(1)
- * 
- * else:
- * 
- * break
- */
 basic.forever(function () {
     if (mooncar.UltrasonicSensor() <= 15) {
         supersound += 1

@@ -34,61 +34,103 @@ def 超音波觸發():
         return
 def 無黑線():
     global 蚊香
-    蚊香 = 0
-    while mooncar.line_follower_sensor() == 無感光:
-        蚊香 += 5
-        mooncar.moon_car_lr(蚊香, 2 * 蚊香)
-        basic.pause(1)
-'''
-    for index in range(20):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
-            basic.pause(1)
+    蚊香 = -90
+    while mooncar.ultrasonic_sensor() != 5:
+        mooncar.moon_car_lr(90, 蚊香)
+        basic.pause(100)
+        if 蚊香 == -89.95:
+            蚊香 = 0
         else:
-            break
-    for index2 in range(40):
-        mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
-        basic.pause(1)
-    for index3 in range(20):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
-            basic.pause(1)
-        else:
-            break
-    for index4 in range(100):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT1, 12)
-            basic.pause(1)
-        else:
-            break
-    for index5 in range(100):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT2, 50)
-            basic.pause(1)
-        else:
-            break
-    for index6 in range(1000):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
-            basic.pause(1)
-        else:
-            break
-    for index7 in range(1000):
-        mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
-        basic.pause(1)
-    for index8 in range(1000):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
-            basic.pause(1)
-        else:
-            break
-'''
-蚊香 = 0
+            蚊香 += 0.05
 全感光 = 0
 supersound = 0
 左感光 = 0
 右感光 = 0
-無感光 = 0
+蚊香 = 0
+# for index in range(20):
+# 
+# if mooncar.ir_read() == 無感光:
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+# 
+# basic.pause(1)
+# 
+# else:
+# 
+# break
+# 
+# for index2 in range(40):
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
+# 
+# basic.pause(1)
+# 
+# for index3 in range(20):
+# 
+# if mooncar.ir_read() == 無感光:
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+# 
+# basic.pause(1)
+# 
+# else:
+# 
+# break
+# 
+# for index4 in range(100):
+# 
+# if mooncar.ir_read() == 無感光:
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT1, 12)
+# 
+# basic.pause(1)
+# 
+# else:
+# 
+# break
+# 
+# for index5 in range(100):
+# 
+# if mooncar.ir_read() == 無感光:
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT2, 50)
+# 
+# basic.pause(1)
+# 
+# else:
+# 
+# break
+# 
+# for index6 in range(1000):
+# 
+# if mooncar.ir_read() == 無感光:
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+# 
+# basic.pause(1)
+# 
+# else:
+# 
+# break
+# 
+# for index7 in range(1000):
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+# 
+# basic.pause(1)
+# 
+# for index8 in range(1000):
+# 
+# if mooncar.ir_read() == 無感光:
+# 
+# mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+# 
+# basic.pause(1)
+# 
+# else:
+# 
+# break
+蚊香 = 0
 mooncar.filllight(mooncar.Switch.OPEN)
 無感光 = 3
 右感光 = 2
