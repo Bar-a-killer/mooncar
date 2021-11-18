@@ -1,3 +1,13 @@
+def Mosquito_coil():
+    global 蚊香
+    蚊香 = -90
+    while mooncar.ultrasonic_sensor() != 5:
+        mooncar.moon_car_lr(90, 蚊香)
+        basic.pause(100)
+        if 蚊香 == -89.95:
+            蚊香 = 0
+        else:
+            蚊香 += 0.05
 def 循線():
     basic.show_leds("""
         . # . # .
@@ -33,15 +43,7 @@ def 超音波觸發():
         basic.pause(500)
         return
 def 無黑線():
-    global 蚊香
-    蚊香 = -90
-    while mooncar.ultrasonic_sensor() != 5:
-        mooncar.moon_car_lr(90, 蚊香)
-        basic.pause(100)
-        if 蚊香 == -89.95:
-            蚊香 = 0
-        else:
-            蚊香 += 0.05
+    pass
 全感光 = 0
 supersound = 0
 左感光 = 0
@@ -142,7 +144,7 @@ def on_forever():
     while supersound % 2 == 1 and mooncar.line_follower_sensor() != 無感光:
         循線()
     if supersound % 2 == 1:
-        無黑線()
+        Mosquito_coil()
 basic.forever(on_forever)
 
 def on_forever2():

@@ -1,6 +1,6 @@
 function Mosquito_coil () {
     蚊香 = -90
-    while (mooncar.UltrasonicSensor() != 5) {
+    while (mooncar.LineFollowerSensor() != 無感光) {
         mooncar.MoonCarLR(90, 蚊香)
         basic.pause(100)
         if (蚊香 == -89.95) {
@@ -55,6 +55,7 @@ let 全感光 = 0
 let supersound = 0
 let 左感光 = 0
 let 右感光 = 0
+let 無感光 = 0
 let 蚊香 = 0
 // for index in range(20):
 // 
@@ -141,7 +142,7 @@ let 蚊香 = 0
 // break
 蚊香 = 0
 mooncar.Filllight(mooncar.Switch.Open)
-let 無感光 = 3
+無感光 = 3
 右感光 = 2
 左感光 = 1
 supersound = 1
