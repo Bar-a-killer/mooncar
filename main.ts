@@ -72,8 +72,7 @@ function Mosquito_coil () {
     }
 }
 function 無黑線 () {
-    x = 擺頭()
-    if (x == 2) {
+    if (擺頭() == 2) {
         return
     }
     for (let index = 0; index < 100; index++) {
@@ -84,8 +83,7 @@ function 無黑線 () {
             return
         }
     }
-    x = 擺頭()
-    if (x == 2) {
+    if (擺頭() == 2) {
         return
     }
     for (let index = 0; index < 100; index++) {
@@ -118,7 +116,6 @@ function 無黑線 () {
     }
     Mosquito_coil()
 }
-let x = 0
 let 全感光 = 0
 let supersound = 0
 let 左感光 = 0
