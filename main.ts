@@ -1,19 +1,17 @@
 function 擺頭 () {
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 10; index++) {
         if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 6)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
         } else {
             return 2
         }
     }
-    for (let index = 0; index < 40; index++) {
-        mooncar.MoonCarGo(mooncar.Direction.direct4, 6)
-        basic.pause(1)
-    }
-    for (let index = 0; index < 20; index++) {
+    mooncar.MoonCarGo(mooncar.Direction.direct4, 10)
+    basic.pause(10)
+    for (let index = 0; index < 10; index++) {
         if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 6)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
         } else {
             return 2
@@ -72,43 +70,65 @@ function Mosquito_coil () {
     }
 }
 function 無黑線 () {
-    if (擺頭() == 2) {
-        return
+    for (let index = 0; index < 10; index++) {
+        if (mooncar.IRRead() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
+            basic.pause(1)
+        } else {
+            return
+        }
+    }
+    mooncar.MoonCarGo(mooncar.Direction.direct4, 10)
+    basic.pause(10)
+    for (let index = 0; index < 10; index++) {
+        if (mooncar.IRRead() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
+            basic.pause(1)
+        } else {
+            return
+        }
     }
     for (let index = 0; index < 100; index++) {
         if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct1, 12)
+            mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
             basic.pause(1)
         } else {
             return
         }
     }
-    if (擺頭() == 2) {
-        return
-    }
-    for (let index = 0; index < 100; index++) {
+    for (let index = 0; index < 10; index++) {
         if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct2, 50)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
         } else {
             return
         }
     }
-    for (let index = 0; index < 1000; index++) {
+    mooncar.MoonCarGo(mooncar.Direction.direct4, 10)
+    basic.pause(10)
+    for (let index = 0; index < 10; index++) {
         if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
         } else {
             return
         }
     }
-    for (let index = 0; index < 1000; index++) {
-        mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
-        basic.pause(1)
-    }
-    for (let index = 0; index < 1000; index++) {
+    mooncar.MoonCarGo(mooncar.Direction.direct2, 20)
+    basic.pause(100)
+    for (let index = 0; index < 10; index++) {
         if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
+            basic.pause(1)
+        } else {
+            return
+        }
+    }
+    mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
+    basic.pause(50)
+    for (let index = 0; index < 10; index++) {
+        if (mooncar.IRRead() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
             basic.pause(1)
         } else {
             return
@@ -137,10 +157,11 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    while (supersound % 2 == 1 && mooncar.LineFollowerSensor() != 無感光) {
-        循線()
-    }
-    if (supersound % 2 == 1) {
-        無黑線()
+    while (supersound % 2 == 1) {
+        if (mooncar.LineFollowerSensor() != 無感光) {
+            循線()
+        } else {
+            無黑線()
+        }
     }
 })

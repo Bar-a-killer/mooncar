@@ -1,16 +1,15 @@
 def 擺頭():
-    for index in range(20):
+    for index in range(10):
         if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
             basic.pause(1)
         else:
             return 2
-    for index2 in range(40):
-        mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
-        basic.pause(1)
-    for index3 in range(20):
+    mooncar.moon_car_go(mooncar.Direction.DIRECT4, 10)
+    basic.pause(10)
+    for index2 in range(10):
         if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 6)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
             basic.pause(1)
         else:
             return 2
@@ -60,31 +59,30 @@ def Mosquito_coil():
         else:
             蚊香 += 0.05
 def 無黑線():
-    x=擺頭()
-    for index4 in range(100):
+    擺頭()
+    if 擺頭() == 2:
+        return
+    for index3 in range(100):
         if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT1, 12)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT1, 20)
             basic.pause(1)
         else:
             return
-    for index5 in range(100):
+    if 擺頭() == 2:
+        return
+    mooncar.moon_car_go(mooncar.Direction.DIRECT2, 20)
+    basic.pause(100)
+    for index4 in range(10):
         if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT2, 50)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 20)
             basic.pause(1)
         else:
             return
-    for index6 in range(1000):
+    mooncar.moon_car_go(mooncar.Direction.DIRECT3, 20)
+    basic.pause(50)
+    for index5 in range(10):
         if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
-            basic.pause(1)
-        else:
-            return
-    for index7 in range(1000):
-        mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
-        basic.pause(1)
-    for index8 in range(1000):
-        if mooncar.ir_read() == 無感光:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT3, 20)
             basic.pause(1)
         else:
             return
@@ -112,8 +110,9 @@ def on_forever():
 basic.forever(on_forever)
 
 def on_forever2():
-    while supersound % 2 == 1 and mooncar.line_follower_sensor() != 無感光:
-        循線()
-    if supersound % 2 == 1:
-        無黑線()
+    while supersound % 2 == 1:
+        if mooncar.line_follower_sensor() != 無感光:
+            循線()
+        else:
+            無黑線()
 basic.forever(on_forever2)
