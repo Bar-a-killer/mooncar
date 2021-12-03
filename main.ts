@@ -1,24 +1,3 @@
-function 擺頭 () {
-    for (let index = 0; index < 10; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
-            basic.pause(1)
-        } else {
-            return 2
-        }
-    }
-    mooncar.MoonCarGo(mooncar.Direction.direct4, 10)
-    basic.pause(10)
-    for (let index = 0; index < 10; index++) {
-        if (mooncar.IRRead() == 無感光) {
-            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
-            basic.pause(1)
-        } else {
-            return 2
-        }
-    }
-    return 0
-}
 function 循線 () {
     basic.showLeds(`
         . # . # .
