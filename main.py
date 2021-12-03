@@ -32,6 +32,13 @@ def 循線():
         mooncar.moon_car_go(mooncar.Direction.DIRECT4, 6)
         basic.pause(1)
 def 超音波觸發():
+    basic.show_leds("""
+        . # # # .
+                . . # . .
+                # . . . #
+                # # . # #
+                # # # # #
+    """)
     if supersound / 2 % 2 == 1:
         mooncar.moon_car_go(mooncar.Direction.DIRECT4, 15)
         basic.pause(500)

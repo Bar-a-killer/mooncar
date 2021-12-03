@@ -44,6 +44,13 @@ function 循線() {
 }
 
 function 超音波觸發() {
+    basic.showLeds(`
+        . # # # .
+                . . # . .
+                # . . . #
+                # # . # #
+                # # # # #
+    `)
     if (supersound / 2 % 2 == 1) {
         mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
         basic.pause(500)
