@@ -1,14 +1,6 @@
 function 擺頭 () {
     for (let index = 0; index < 100; index++) {
         if (mooncar.IRRead() == 無感光) {
-            basic.showLeds(`
-                . . . . .
-                . # . # .
-                . . . . .
-                . # # # .
-                . . . . .
-                `)
-            basic.pause(1)
             mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
         } else {
@@ -153,10 +145,12 @@ mooncar.Filllight(mooncar.Switch.Open)
 supersound = 1
 全感光 = 0
 basic.forever(function () {
-    if (mooncar.UltrasonicSensor() <= 15) {
-        supersound += 1
-        超音波觸發()
-        supersound += 1
+    while (supersound % 2 == 0) {
+        if (mooncar.UltrasonicSensor() <= 15) {
+            supersound += 1
+            超音波觸發()
+            supersound += 1
+        }
     }
 })
 basic.forever(function () {
