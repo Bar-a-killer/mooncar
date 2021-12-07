@@ -1,5 +1,13 @@
 def 擺頭():
-    for index in range(10):
+    basic.show_leds("""
+        . . . . .
+                . # . # .
+                . . . . .
+                . # # # .
+                . . . . .
+    """)
+    basic.pause(1)
+    for index in range(100):
         if mooncar.ir_read() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
             basic.pause(1)
@@ -7,7 +15,7 @@ def 擺頭():
             return 2
     mooncar.moon_car_go(mooncar.Direction.DIRECT4, 10)
     basic.pause(10)
-    for index2 in range(10):
+    for index2 in range(100):
         if mooncar.ir_read() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
             basic.pause(1)
@@ -22,6 +30,9 @@ def 循線():
                 . . # . .
                 . . . . .
     """)
+    basic.pause(1)
+    mooncar.moon_car_go(mooncar.Direction.DIRECT5, 100)
+    basic.pause(100)
     if mooncar.line_follower_sensor() == 全感光:
         mooncar.moon_car_go(mooncar.Direction.DIRECT1, 15)
         basic.pause(1)
@@ -57,6 +68,14 @@ def 超音波觸發():
         return
 def Mosquito_coil():
     global 蚊香
+    basic.show_leds("""
+        . . # . .
+                . # . # .
+                # # # # #
+                . # # # .
+                . . # . .
+    """)
+    basic.pause(1)
     蚊香 = -90
     while mooncar.line_follower_sensor() == 無感光:
         mooncar.moon_car_lr(90, 蚊香)
@@ -66,7 +85,14 @@ def Mosquito_coil():
         else:
             蚊香 += 0.05
 def 無黑線():
-    擺頭()
+    basic.show_leds("""
+        # . . . #
+                . . . . .
+                # . . . #
+                # . . . #
+                . # # # .
+    """)
+    basic.pause(1)
     if 擺頭() == 2:
         return
     for index3 in range(100):
