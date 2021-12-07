@@ -36,8 +36,6 @@ function 循線 () {
         . . . . .
         `)
     basic.pause(1)
-    mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
-    basic.pause(100)
     if (mooncar.LineFollowerSensor() == 全感光) {
         mooncar.MoonCarGo(mooncar.Direction.direct1, 15)
         basic.pause(1)
@@ -57,6 +55,7 @@ function 超音波觸發 () {
         # # . # #
         # # # # #
         `)
+    basic.pause(1)
     if (supersound / 2 % 2 == 1) {
         mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
         basic.pause(500)
@@ -166,6 +165,8 @@ basic.forever(function () {
             循線()
         } else {
             無黑線()
+            mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
+            basic.pause(100)
         }
     }
 })
