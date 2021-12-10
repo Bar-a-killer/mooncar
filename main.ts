@@ -7,25 +7,25 @@ function 擺頭 () {
         . . . . .
         `)
     basic.pause(1)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 300) {
+    while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
         basic.pause(1)
         times += 1
     }
-    if (times != 300) {
+    if (times != 200) {
         times = 0
         return 2
     } else {
         times = 0
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct4, 10)
-    basic.pause(1000)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 300) {
+    mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
+    basic.pause(900)
+    while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
         basic.pause(1)
         times += 1
     }
-    if (times != 300) {
+    if (times != 200) {
         times = 0
         return 2
     } else {
@@ -127,7 +127,7 @@ function 無黑線 () {
         return
     }
     mooncar.MoonCarGo(mooncar.Direction.direct2, 20)
-    basic.pause(500)
+    basic.pause(1500)
     while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
         basic.pause(1)
@@ -160,6 +160,7 @@ function 無黑線 () {
     } else {
         times = 0
     }
+    Mosquito_coil()
 }
 let times = 0
 let 全感光 = 0
@@ -176,12 +177,10 @@ mooncar.Filllight(mooncar.Switch.Open)
 supersound = 1
 全感光 = 0
 basic.forever(function () {
-    while (supersound % 2 == 0) {
-        if (mooncar.UltrasonicSensor() <= 15) {
-            supersound += 1
-            超音波觸發()
-            supersound += 1
-        }
+    if (mooncar.UltrasonicSensor() <= 15) {
+        supersound += 1
+        超音波觸發()
+        supersound += 1
     }
 })
 basic.forever(function () {
@@ -191,7 +190,7 @@ basic.forever(function () {
         } else {
             無黑線()
             mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
-            basic.pause(100)
+            basic.pause(20)
         }
     }
 })
