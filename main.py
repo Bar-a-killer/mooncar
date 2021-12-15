@@ -8,22 +8,22 @@ def 擺頭():
                 . . . . .
     """)
     basic.pause(1)
-    while mooncar.line_follower_sensor() == 無感光 and times < 300:
+    while mooncar.line_follower_sensor() == 無感光 and times < 250:
         mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
         basic.pause(1)
         times += 1
-    if times != 300:
+    if times != 250:
         times = 0
         return 2
     else:
         times = 0
     mooncar.moon_car_go(mooncar.Direction.DIRECT4, 20)
     basic.pause(1000)
-    while mooncar.line_follower_sensor() == 無感光 and times < 300:
+    while mooncar.line_follower_sensor() == 無感光 and times < 200:
         mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
         basic.pause(1)
         times += 1
-    if times != 300:
+    if times != 250:
         times = 0
         return 2
     else:
@@ -114,7 +114,7 @@ def 無黑線():
     if 擺頭() == 2:
         return
     mooncar.moon_car_go(mooncar.Direction.DIRECT2, 20)
-    basic.pause(500)
+    basic.pause(2000)
     while mooncar.line_follower_sensor() == 無感光 and times < 200:
         mooncar.moon_car_go(mooncar.Direction.DIRECT3, 30)
         basic.pause(1)
@@ -145,19 +145,19 @@ def 無黑線():
         times = 0
     Mosquito_coil()
 times = 0
-全感光 = 0
+蚊香 = 0
 supersound = 0
+全感光 = 0
 左感光 = 0
 右感光 = 0
 無感光 = 0
-蚊香 = 0
-蚊香 = 0
 mooncar.filllight(mooncar.Switch.OPEN)
 無感光 = 3
 右感光 = 2
 左感光 = 1
-supersound = 1
 全感光 = 0
+supersound = 1
+蚊香 = 0
 
 def on_forever():
     global supersound
@@ -176,3 +176,4 @@ def on_forever2():
             mooncar.moon_car_go(mooncar.Direction.DIRECT5, 100)
             basic.pause(100)
 basic.forever(on_forever2)
+

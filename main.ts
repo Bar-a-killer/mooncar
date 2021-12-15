@@ -7,12 +7,12 @@ function 擺頭 () {
         . . . . .
         `)
     basic.pause(1)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 300) {
+    while (mooncar.LineFollowerSensor() == 無感光 && times < 250) {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
         basic.pause(1)
         times += 1
     }
-    if (times != 300) {
+    if (times != 250) {
         times = 0
         return 2
     } else {
@@ -20,12 +20,12 @@ function 擺頭 () {
     }
     mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
     basic.pause(1000)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 300) {
+    while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
         basic.pause(1)
         times += 1
     }
-    if (times != 300) {
+    if (times != 250) {
         times = 0
         return 2
     } else {
@@ -127,7 +127,7 @@ function 無黑線 () {
         return
     }
     mooncar.MoonCarGo(mooncar.Direction.direct2, 20)
-    basic.pause(500)
+    basic.pause(2000)
     while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
         mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
         basic.pause(1)
@@ -163,19 +163,19 @@ function 無黑線 () {
     Mosquito_coil()
 }
 let times = 0
-let 全感光 = 0
+let 蚊香 = 0
 let supersound = 0
+let 全感光 = 0
 let 左感光 = 0
 let 右感光 = 0
 let 無感光 = 0
-let 蚊香 = 0
-蚊香 = 0
 mooncar.Filllight(mooncar.Switch.Open)
-無感光 = 0
-右感光 = 1
-左感光 = 2
+無感光 = 3
+右感光 = 2
+左感光 = 1
+全感光 = 0
 supersound = 1
-全感光 = 3
+蚊香 = 0
 basic.forever(function () {
     if (mooncar.UltrasonicSensor() <= 15) {
         supersound += 1
