@@ -7,31 +7,25 @@ function 擺頭 () {
         . . . . .
         `)
     basic.pause(1)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 250) {
-        mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
-        basic.pause(1)
-        times += 1
-    }
-    if (times != 250) {
-        times = 0
-        return 2
-    } else {
-        times = 0
+    for (let index = 0; index < 250; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
+            basic.pause(1)
+        } else {
+            return 2
+        }
     }
     mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
     basic.pause(1000)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
-        mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
-        basic.pause(1)
-        times += 1
+    for (let index = 0; index < 250; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
+            basic.pause(1)
+        } else {
+            return 2
+        }
     }
-    if (times != 250) {
-        times = 0
-        return 2
-    } else {
-        times = 0
-        return 0
-    }
+    return 0
 }
 function 循線 () {
     basic.showLeds(`
@@ -112,57 +106,39 @@ function 無黑線 () {
     if (擺頭() == 2) {
         return
     }
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 500) {
-        mooncar.MoonCarGo(mooncar.Direction.direct1, 20)
-        basic.pause(1)
-        times += 1
-    }
-    if (times != 500) {
-        times = 0
-        return
-    } else {
-        times = 0
+    for (let index = 0; index < 500; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct1, 10)
+            basic.pause(1)
+        } else {
+            return
+        }
     }
     if (擺頭() == 2) {
         return
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct2, 20)
+    mooncar.MoonCarGo(mooncar.Direction.direct2, 30)
     basic.pause(2000)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
-        mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
-        basic.pause(1)
-        times += 1
+    for (let index = 0; index < 500; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
+            basic.pause(1)
+        } else {
+            return
+        }
     }
-    if (times != 200) {
-        times = 0
-        return
-    } else {
-        times = 0
-    }
-    basic.showLeds(`
-        . . # . .
-        . # # # .
-        . . # . .
-        . . # . .
-        . . # . .
-        `)
-    basic.pause(1)
-    mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
-    basic.pause(100)
-    while (mooncar.LineFollowerSensor() == 無感光 && times < 200) {
-        mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
-        basic.pause(1)
-        times += 1
-    }
-    if (times != 200) {
-        times = 0
-        return
-    } else {
-        times = 0
+    mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
+    basic.pause(500)
+    for (let index = 0; index < 500; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
+            basic.pause(1)
+        } else {
+            return
+        }
     }
     Mosquito_coil()
 }
-let times = 0
 let 蚊香 = 0
 let supersound = 0
 let 全感光 = 0
