@@ -7,7 +7,7 @@ function 擺頭 () {
         . . . . .
         `)
     basic.pause(1)
-    for (let index = 0; index < 250; index++) {
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
@@ -15,9 +15,9 @@ function 擺頭 () {
             return 2
         }
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct4, 20)
+    mooncar.MoonCarGo(mooncar.Direction.direct4, 40)
     basic.pause(1000)
-    for (let index = 0; index < 250; index++) {
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
@@ -118,8 +118,8 @@ function 無黑線 () {
         return
     }
     mooncar.MoonCarGo(mooncar.Direction.direct2, 30)
-    basic.pause(2000)
-    for (let index = 0; index < 500; index++) {
+    basic.pause(1000)
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
             basic.pause(1)
@@ -127,9 +127,9 @@ function 無黑線 () {
             return
         }
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
-    basic.pause(500)
-    for (let index = 0; index < 500; index++) {
+    mooncar.MoonCarGo(mooncar.Direction.direct3, 40)
+    basic.pause(200)
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 30)
             basic.pause(1)
