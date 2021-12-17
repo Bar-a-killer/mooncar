@@ -95,7 +95,6 @@ function Mosquito_coil () {
     }
 }
 function 無黑線 () {
-    let strip: neopixel.Strip = null
     basic.showLeds(`
         # . . . #
         . . . . .
@@ -142,6 +141,7 @@ function 無黑線 () {
     }
     Mosquito_coil()
 }
+let strip: neopixel.Strip = null
 let 蚊香 = 0
 let supersound = 0
 let 全感光 = 0
@@ -155,6 +155,7 @@ mooncar.Filllight(mooncar.Switch.Open)
 全感光 = 0
 supersound = 1
 蚊香 = 0
+strip = neopixel.create(DigitalPin.P12, 8, NeoPixelMode.RGB)
 basic.forever(function () {
     if (mooncar.UltrasonicSensor() <= 15) {
         supersound += 1
