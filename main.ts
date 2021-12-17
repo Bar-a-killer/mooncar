@@ -1,11 +1,11 @@
-function 擺頭(): number {
+function 擺頭 () {
     basic.showLeds(`
         . . . . .
-                . # . # .
-                . . . . .
-                . # # # .
-                . . . . .
-    `)
+        . # . # .
+        . . . . .
+        . # # # .
+        . . . . .
+        `)
     basic.pause(1)
     for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
@@ -14,30 +14,27 @@ function 擺頭(): number {
         } else {
             return 2
         }
-        
     }
     mooncar.MoonCarGo(mooncar.Direction.direct4, 40)
     basic.pause(650)
-    for (let index2 = 0; index2 < 200; index2++) {
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
             basic.pause(1)
         } else {
             return 2
         }
-        
     }
     return 0
 }
-
-function 循線() {
+function 循線 () {
     basic.showLeds(`
         . # . # .
-                . . . . .
-                # # . # #
-                . . # . .
-                . . . . .
-    `)
+        . . . . .
+        # # . # #
+        . . # . .
+        . . . . .
+        `)
     basic.pause(1)
     if (mooncar.LineFollowerSensor() == 全感光) {
         mooncar.MoonCarGo(mooncar.Direction.direct1, 15)
@@ -49,17 +46,15 @@ function 循線() {
         mooncar.MoonCarGo(mooncar.Direction.direct4, 6)
         basic.pause(1)
     }
-    
 }
-
-function 超音波觸發() {
+function 超音波觸發 () {
     basic.showLeds(`
         . # # # .
-                . . # . .
-                # . . . #
-                # # . # #
-                # # # # #
-    `)
+        . . # . .
+        # . . . #
+        # # . # #
+        # # # # #
+        `)
     basic.pause(1)
     if (supersound / 2 % 2 == 1) {
         mooncar.MoonCarGo(mooncar.Direction.direct4, 15)
@@ -78,18 +73,15 @@ function 超音波觸發() {
         basic.pause(500)
         return
     }
-    
 }
-
-function Mosquito_coil() {
-    
+function Mosquito_coil () {
     basic.showLeds(`
         . . # . .
-                . # . # .
-                # # # # #
-                . # # # .
-                . . # . .
-    `)
+        . # . # .
+        # # # # #
+        . # # # .
+        . . # . .
+        `)
     basic.pause(1)
     蚊香 = -90
     while (mooncar.LineFollowerSensor() == 無感光) {
@@ -100,61 +92,56 @@ function Mosquito_coil() {
         } else {
             蚊香 += 0.05
         }
-        
     }
 }
-
-function 無黑線() {
+function 無黑線 () {
+    let strip: neopixel.Strip = null
     basic.showLeds(`
         # . . . #
-                . . . . .
-                # . . . #
-                # . . . #
-                . # # # .
-    `)
+        . . . . .
+        # . . . #
+        # . . . #
+        . # # # .
+        `)
     basic.pause(1)
     if (擺頭() == 2) {
         return
     }
-    
-    for (let index3 = 0; index3 < 500; index3++) {
+    for (let index = 0; index < 500; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct1, 10)
             basic.pause(1)
         } else {
             return
         }
-        
     }
     if (擺頭() == 2) {
         return
     }
-    
     mooncar.MoonCarGo(mooncar.Direction.direct2, 30)
     basic.pause(1000)
-    for (let index4 = 0; index4 < 200; index4++) {
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
             basic.pause(1)
         } else {
             return
         }
-        
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct3, 50)
+    strip.showColor(neopixel.colors(NeoPixelColors.Red))
+    mooncar.MoonCarGo(mooncar.Direction.direct3, 90)
     basic.pause(100)
-    for (let index5 = 0; index5 < 200; index5++) {
+    strip.clear()
+    for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
             basic.pause(1)
         } else {
             return
         }
-        
     }
     Mosquito_coil()
 }
-
 let 蚊香 = 0
 let supersound = 0
 let 全感光 = 0
@@ -168,8 +155,7 @@ mooncar.Filllight(mooncar.Switch.Open)
 全感光 = 0
 supersound = 1
 蚊香 = 0
-basic.forever(function on_forever() {
-    
+basic.forever(function () {
     if (mooncar.UltrasonicSensor() <= 15) {
         supersound += 1
         超音波觸發()
@@ -177,9 +163,8 @@ basic.forever(function on_forever() {
         basic.pause(50)
         supersound += 1
     }
-    
 })
-basic.forever(function on_forever2() {
+basic.forever(function () {
     while (supersound % 2 == 1) {
         if (mooncar.LineFollowerSensor() != 無感光) {
             循線()
@@ -188,6 +173,5 @@ basic.forever(function on_forever2() {
             mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
             basic.pause(100)
         }
-        
     }
 })
