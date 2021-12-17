@@ -16,7 +16,7 @@ function 擺頭 () {
         }
     }
     mooncar.MoonCarGo(mooncar.Direction.direct4, 40)
-    basic.pause(650)
+    basic.pause(725)
     for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
@@ -119,7 +119,7 @@ function 無黑線 () {
     }
     mooncar.MoonCarGo(mooncar.Direction.direct2, 30)
     basic.pause(1000)
-    for (let index = 0; index < 200; index++) {
+    for (let index = 0; index < 175; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
             basic.pause(1)
@@ -129,9 +129,9 @@ function 無黑線 () {
     }
     strip.showColor(neopixel.colors(NeoPixelColors.Red))
     mooncar.MoonCarGo(mooncar.Direction.direct3, 90)
-    basic.pause(100)
-    strip.clear()
-    for (let index = 0; index < 200; index++) {
+    basic.pause(300)
+    strip.showColor(neopixel.colors(NeoPixelColors.Black))
+    for (let index = 0; index < 175; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
             basic.pause(1)
@@ -157,19 +157,14 @@ supersound = 1
 蚊香 = 0
 strip = neopixel.create(DigitalPin.P12, 8, NeoPixelMode.RGB)
 basic.forever(function () {
-    if (mooncar.UltrasonicSensor() <= 15) {
-        supersound += 1
-        超音波觸發()
-        mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
-        basic.pause(50)
-        supersound += 1
-    }
-})
-basic.forever(function () {
     while (supersound % 2 == 1) {
-        if (mooncar.LineFollowerSensor() != 無感光) {
+        if (mooncar.UltrasonicSensor() < 15) {
+            超音波觸發()
+        } else if (mooncar.LineFollowerSensor() != 無感光) {
             循線()
         } else {
+            mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
+            basic.pause(100)
             無黑線()
             mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
             basic.pause(100)

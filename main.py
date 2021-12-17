@@ -14,7 +14,7 @@ def 擺頭():
         else:
             return 2
     mooncar.moon_car_go(mooncar.Direction.DIRECT4, 40)
-    basic.pause(650)
+    basic.pause(675)
     for index2 in range(200):
         if mooncar.line_follower_sensor() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
@@ -104,21 +104,24 @@ def 無黑線():
         return
     mooncar.moon_car_go(mooncar.Direction.DIRECT2, 30)
     basic.pause(1000)
-    for index4 in range(200):
+    for index4 in range(175):
         if mooncar.line_follower_sensor() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 20)
             basic.pause(1)
         else:
             return
-    mooncar.moon_car_go(mooncar.Direction.DIRECT3, 50)
-    basic.pause(100)
-    for index5 in range(200):
+    strip.show_color(neopixel.colors(NeoPixelColors.RED))
+    mooncar.moon_car_go(mooncar.Direction.DIRECT3, 90)
+    basic.pause(300)
+    strip.show_color(neopixel.colors(NeoPixelColors.BLACK))
+    for index5 in range(175):
         if mooncar.line_follower_sensor() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 20)
             basic.pause(1)
         else:
             return
     Mosquito_coil()
+strip: neopixel.Strip = None
 蚊香 = 0
 supersound = 0
 全感光 = 0
@@ -132,23 +135,18 @@ mooncar.filllight(mooncar.Switch.OPEN)
 全感光 = 0
 supersound = 1
 蚊香 = 0
+strip = neopixel.create(DigitalPin.P12, 8, NeoPixelMode.RGB)
 
 def on_forever():
-    global supersound
-    if mooncar.ultrasonic_sensor() <= 15:
-        supersound += 1
-        超音波觸發()
-        mooncar.moon_car_go(mooncar.Direction.DIRECT5, 100)
-        basic.pause(50)
-        supersound += 1
-basic.forever(on_forever)
-
-def on_forever2():
     while supersound % 2 == 1:
-        if mooncar.line_follower_sensor() != 無感光:
+        if True:
+            超音波觸發()
+        elif mooncar.line_follower_sensor() != 無感光:
             循線()
         else:
+            mooncar.moon_car_go(mooncar.Direction.DIRECT2, 100)
+            basic.pause(100)
             無黑線()
             mooncar.moon_car_go(mooncar.Direction.DIRECT5, 100)
             basic.pause(100)
-basic.forever(on_forever2)
+basic.forever(on_forever)
