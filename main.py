@@ -14,7 +14,7 @@ def 擺頭():
         else:
             return 2
     mooncar.moon_car_go(mooncar.Direction.DIRECT4, 40)
-    basic.pause(675)
+    basic.pause(725)
     for index2 in range(200):
         if mooncar.line_follower_sensor() == 無感光:
             mooncar.moon_car_go(mooncar.Direction.DIRECT3, 10)
@@ -139,14 +139,14 @@ strip = neopixel.create(DigitalPin.P12, 8, NeoPixelMode.RGB)
 
 def on_forever():
     while supersound % 2 == 1:
-        if True:
+        if mooncar.ultrasonic_sensor() < 15:
             超音波觸發()
         elif mooncar.line_follower_sensor() != 無感光:
             循線()
         else:
-            mooncar.moon_car_go(mooncar.Direction.DIRECT2, 100)
-            basic.pause(100)
+            mooncar.moon_car_go(mooncar.Direction.DIRECT5, 100)
+            basic.pause(50)
             無黑線()
             mooncar.moon_car_go(mooncar.Direction.DIRECT5, 100)
-            basic.pause(100)
+            basic.pause(50)
 basic.forever(on_forever)

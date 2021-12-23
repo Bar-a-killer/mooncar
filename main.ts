@@ -15,8 +15,8 @@ function 擺頭 () {
             return 2
         }
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct4, 40)
-    basic.pause(725)
+    mooncar.MoonCarGo(mooncar.Direction.direct4, 90)
+    basic.pause(550)
     for (let index = 0; index < 200; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 10)
@@ -117,7 +117,7 @@ function 無黑線 () {
     if (擺頭() == 2) {
         return
     }
-    mooncar.MoonCarGo(mooncar.Direction.direct2, 30)
+    mooncar.MoonCarGo(mooncar.Direction.direct2, 100)
     basic.pause(1000)
     for (let index = 0; index < 175; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
@@ -129,7 +129,7 @@ function 無黑線 () {
     }
     strip.showColor(neopixel.colors(NeoPixelColors.Red))
     mooncar.MoonCarGo(mooncar.Direction.direct3, 90)
-    basic.pause(300)
+    basic.pause(400)
     strip.showColor(neopixel.colors(NeoPixelColors.Black))
     for (let index = 0; index < 175; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
@@ -164,10 +164,10 @@ basic.forever(function () {
             循線()
         } else {
             mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
-            basic.pause(100)
+            basic.pause(50)
             無黑線()
             mooncar.MoonCarGo(mooncar.Direction.direct5, 100)
-            basic.pause(100)
+            basic.pause(50)
         }
     }
 })
