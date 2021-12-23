@@ -114,8 +114,25 @@ function 無黑線 () {
             return
         }
     }
-    if (擺頭() == 2) {
-        return
+    for (let index = 0; index < 175; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
+            basic.pause(1)
+        } else {
+            return
+        }
+    }
+    strip.showColor(neopixel.colors(NeoPixelColors.Red))
+    mooncar.MoonCarGo(mooncar.Direction.direct3, 90)
+    basic.pause(400)
+    strip.showColor(neopixel.colors(NeoPixelColors.Black))
+    for (let index = 0; index < 175; index++) {
+        if (mooncar.LineFollowerSensor() == 無感光) {
+            mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
+            basic.pause(1)
+        } else {
+            return
+        }
     }
     mooncar.MoonCarGo(mooncar.Direction.direct2, 100)
     basic.pause(1000)
