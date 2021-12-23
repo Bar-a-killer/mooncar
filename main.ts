@@ -148,7 +148,7 @@ function 無黑線 () {
     mooncar.MoonCarGo(mooncar.Direction.direct3, 90)
     basic.pause(400)
     strip.showColor(neopixel.colors(NeoPixelColors.Black))
-    for (let index = 0; index < 175; index++) {
+    for (let index = 0; index < 100; index++) {
         if (mooncar.LineFollowerSensor() == 無感光) {
             mooncar.MoonCarGo(mooncar.Direction.direct3, 20)
             basic.pause(1)
